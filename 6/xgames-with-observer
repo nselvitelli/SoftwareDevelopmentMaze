@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar ../Maze/target/ObserverHarness-jar-with-dependencies.jar "$@"

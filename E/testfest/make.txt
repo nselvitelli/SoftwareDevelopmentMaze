@@ -1,0 +1,47 @@
+cd Other && mvn package
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Other 1.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ Other ---
+[debug] execute contextualize
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /course/cs4500f22/ta/github/akshayd2020-nselvitelli/E/Other/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ Other ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ Other ---
+[debug] execute contextualize
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /course/cs4500f22/ta/github/akshayd2020-nselvitelli/E/Other/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ Other ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ Other ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: /course/cs4500f22/ta/github/akshayd2020-nselvitelli/E/Other/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.2:jar (default-jar) @ Other ---
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.5.5:single (make-assembly) @ Other ---
+[INFO] Building jar: /course/cs4500f22/ta/github/akshayd2020-nselvitelli/E/Other/target/Other-1.0-jar-with-dependencies.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.082s
+[INFO] Finished at: Fri Sep 30 11:20:54 EDT 2022
+[INFO] Final Memory: 10M/40M
+[INFO] ------------------------------------------------------------------------

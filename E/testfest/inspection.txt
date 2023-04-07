@@ -1,0 +1,17 @@
+Pair: akshayd2020-nselvitelli
+Commit: f13e1f3334d84eca1d1b3d0dc332f30c22c3838a
+Self-eval: https://github.khoury.northeastern.edu/CS4500-F22/akshayd2020-nselvitelli/blob/cebfcb2b06628676f32cd70a35437f5aa841e822/E/self-E.md
+Score: 6/30
+Grader: Alexis Hooks
+
+Self Evaluation [0/10]:
+  [-10] - self eval was not turned in
+  
+Code Inspection [6/20]:
+Because your self eval was not turned in on time the code inspection will be graded on a 60% scale
+
+  [-10] - for not dealing with the tcp part as a "separate" function/method
+  [+10] - for being able to find where the re-used functionality is
+  [-4]  - no self eval
+
+Commit URL: https://github.khoury.northeastern.edu/CS4500-F22/akshayd2020-nselvitelli/tree/f13e1f3334d84eca1d1b3d0dc332f30c22c3838a

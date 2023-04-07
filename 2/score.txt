@@ -1,0 +1,6 @@
+Delivery
+5/5 pts: state.md
+5/5 pts: board.pp
+Inspection
+60/80 pts: See inspection.md
+Total: 70/90 pts

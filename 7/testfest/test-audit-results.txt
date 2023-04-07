@@ -1,0 +1,19 @@
+(testing /home/samc/sw-dev/22SwDev/Code/7/xbad)
+(testing /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-0/0-in.json /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-0/0-out.json)
+failure for home : '#s(coordinate 4 3)
+failure for home : '#s(coordinate 4 3)
+BadPlayer dropped out on win: (exn:fail:contract:divide-by-zero "/: division by zero" #<continuation-mark-set>) [time limit 3.0]
+((/course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-0/0-in.json /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-0/0-out.json))
+((passed 1) (total 1) (partial-score 1))
+(testing /home/samc/sw-dev/22SwDev/Code/7/xbad)
+(testing /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-1/1-in.json /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-1/1-out.json)
+failure for home : '#s(coordinate 2 5)
+failure for home : '#s(coordinate 2 5)
+aBad dropped out on setup: (exn:fail:contract:divide-by-zero "/: division by zero" #<continuation-mark-set>) [time limit 3.0]
+((/course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-1/1-in.json /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-1/1-out.json))
+((passed 1) (total 1) (partial-score 1))
+(testing /home/samc/sw-dev/22SwDev/Code/7/xbad)
+(testing /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-2/2-in.json /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-2/2-out.json)
+Derek dropped out on take-turn: (exn:fail:contract:divide-by-zero "/: division by zero" #<continuation-mark-set>) [time limit 3.0]
+((/course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-2/2-in.json /course/cs4500f22/ta/github/ambidextrous-lions/7/Tests-2/2-out.json))
+((passed 1) (total 1) (partial-score 1))
