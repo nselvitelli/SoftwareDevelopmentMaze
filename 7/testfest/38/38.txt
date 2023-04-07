@@ -1,4 +1,4 @@
-(testing /course/cs4500f22/ta/github/ambidextrous-lions/7/xbad)
+(testing /course/cs4500f22/ta/github/fearless-rabbits/7/xbad)
 (testing /course/cs4500f22/ta/github/7/38/Tests/0-in.json /course/cs4500f22/ta/github/7/38/Tests/0-out.json)
 (testing /course/cs4500f22/ta/github/7/38/Tests/1-in.json /course/cs4500f22/ta/github/7/38/Tests/1-out.json)
 ---------------------------------
@@ -102,7 +102,8 @@
 (*** expected)
 '((("Imposter") ("Crewmate" "Doctor" "Sus")))
 (*** but received)
-'(((plain fast with-newline plain-unicode) ((("Imposter") ("Doctor" "Sus")))))
+'(((plain fast with-newline plain-unicode)
+   ((("Imposter") ("Doctor" "Crewmate" "Sus")))))
 
 
 ((/course/cs4500f22/ta/github/7/38/Tests/0-in.json /course/cs4500f22/ta/github/7/38/Tests/0-out.json))

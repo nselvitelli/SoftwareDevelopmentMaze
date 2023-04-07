@@ -1,63 +1,19 @@
-[
-  [
-    "aRiemannPlayer",
-    "Riemann"
-  ],
-  [
-    "aBad",
-    "Euclid",
-    "setUp"
-  ],
-  [
-    "AEuclidPlayer",
-    "Euclid"
-  ]
-]
-
-{
-    "board":
-      {
-        "connectors":
-        [["┘","─","└","┐","┼","┤","┤"],
-        ["│","─","│","├","┌","─","└"],
-        ["┘","─","┌","│","┴","├","─"],
-        ["┘","┼","┬","┘","┼","─","├"],
-        ["┐","├","─","┌","┘","─","└"],
-        ["┤","┬","├","└","│","─","│"],
-        ["┴","─","┬","│","┘","─","┌"]],
-        "treasures":
-          [[["zoisite","zircon"],["zircon","yellow-jasper"],["yellow-jasper","yellow-heart"],["yellow-heart","yellow-beryl-oval"],["yellow-beryl-oval","yellow-baguette"],["yellow-baguette","white-square"],["white-square","unakite"]],
-          [["unakite","tourmaline"],["tourmaline","tourmaline-laser-cut"],["tourmaline-laser-cut","tigers-eye"],["tigers-eye","tanzanite-trillion"],["tanzanite-trillion","super-seven"],["super-seven","sunstone"],["sunstone","stilbite"]],
-          [["stilbite","star-cabochon"],["star-cabochon","spinel"],["spinel","sphalerite"],["sphalerite","ruby"],["ruby","ruby-diamond-profile"],["ruby-diamond-profile","rose-quartz"],["rose-quartz","rock-quartz"]],
-          [["rock-quartz","rhodonite"],["rhodonite","red-spinel-square-emerald-cut"],["red-spinel-square-emerald-cut","red-diamond"],["red-diamond","raw-citrine"],["raw-citrine","raw-beryl"],["raw-beryl","purple-square-cushion"],["purple-square-cushion","purple-spinel-trillion"]],
-          [["purple-spinel-trillion","purple-oval"],["purple-oval","purple-cabochon"],["purple-cabochon","prehnite"],["prehnite","prasiolite"],["prasiolite","pink-spinel-cushion"],["pink-spinel-cushion","pink-round"],["pink-round","pink-opal"]],
-          [["pink-opal","pink-emerald-cut"],["pink-emerald-cut","peridot"],["peridot","padparadscha-sapphire"],["padparadscha-sapphire","padparadscha-oval"],["padparadscha-oval","orange-radiant"],["orange-radiant","moss-agate"],["moss-agate","morganite-oval"]],
-          [["morganite-oval","moonstone"],["moonstone","mexican-opal"],["mexican-opal","magnesite"],["magnesite","lemon-quartz-briolette"],["lemon-quartz-briolette","lapis-lazuli"],["lapis-lazuli","labradorite"],["labradorite","kunzite"]]]
-      },
-    "spare":
-      { "tilekey": "┘",
-        "1-image": "zoisite",
-        "2-image": "rose-quartz"
-      },
-    "plmt": [
-      {
-        "current" : { "row#": 1, "column#" : 1 },
-        "home"    : { "row#": 1, "column#" : 1 },
-        "goto"    : { "row#": 5, "column#" : 1 },
-        "color"   : "yellow"
-      },
-      {
-        "current" : { "row#": 2, "column#" : 5 },
-        "home"    : { "row#": 2, "column#" : 5 },
-        "goto"    : { "row#": 1, "column#" : 3 },
-        "color"   : "blue"
-      },
-      {
-        "current" : { "row#": 5, "column#" : 5 },
-        "home"    : { "row#": 5, "column#" : 5 },
-        "goto"    : { "row#": 1, "column#" : 5 },
-        "color"   : "green"
-      }
-    ],
-    "last": null
-}
+[["joe","Euclid"], ["john","Riemann"], ["duncan","Riemann", "setUp"], ["kirt","Riemann", "takeTurn"], ["yang","Riemann", "takeTurn"]]
+{"board":{
+    "connectors":[
+        ["┼","┼","┼","│","│","┼","┼"],
+        ["─","─","─","│","│","┼","┼"],
+        ["┼","┼","┼","│","│","┼","┼"],
+        ["─","│","─","│","│","┼","┼"],
+        ["┼","│","┼","│","│","┼","┼"],
+        ["─","│","─","│","│","┼","┼"],
+        ["─","─","─","│","│","┼","┼"]],
+    "treasures":[[["ammolite","yellow-baguette"],["goldstone","yellow-beryl-oval"],["amethyst","yellow-heart"],["yellow-heart","zoisite"],["unakite","zoisite"],["tourmaline","zoisite"],["tourmaline-laser-cut","zoisite"]],[["alexandrite-pear-shape","zoisite"],["aplite","unakite"],["golden-diamond-cut","zoisite"],["yellow-beryl-oval","zoisite"],["tigers-eye","zoisite"],["tanzanite-trillion","zoisite"],["super-seven","zoisite"]],[["almandine-garnet","yellow-jasper"],["ametrine","yellow-beryl-oval"],["alexandrite","zircon"],["yellow-baguette","zoisite"],["sunstone","zoisite"],["stilbite","zoisite"],["star-cabochon","zoisite"]],[["zoisite","zoisite"],["zircon","zoisite"],["yellow-jasper","zoisite"],["white-square","zoisite"],["spinel","zoisite"],["sphalerite","zoisite"],["ruby","zoisite"]],[["ruby-diamond-profile","zoisite"],["rose-quartz","zoisite"],["rock-quartz","zoisite"],["rhodonite","zoisite"],["red-spinel-square-emerald-cut","zoisite"],["red-diamond","zoisite"],["raw-citrine","zoisite"]],[["raw-beryl","zoisite"],["purple-square-cushion","zoisite"],["purple-spinel-trillion","zoisite"],["purple-oval","zoisite"],["purple-cabochon","zoisite"],["prehnite","zoisite"],["prasiolite","zoisite"]],[["pink-spinel-cushion","zoisite"],["pink-round","zoisite"],["pink-opal","zoisite"],["pink-emerald-cut","zoisite"],["peridot","zoisite"],["padparadscha-sapphire","zoisite"],["padparadscha-oval","zoisite"]]]},
+    "last":null,
+    "plmt":[
+        {"color":"pink","current":{"column#":2,"row#":2},"home":{"column#":3,"row#":5},"goto":{"column#":3,"row#":3}},
+        {"color":"blue","current":{"column#":1,"row#":5},"home":{"column#":5,"row#":5},"goto":{"column#":1,"row#":5}},
+        {"color":"red","current":{"column#":2,"row#":2},"home":{"column#":5,"row#":3},"goto":{"column#":3,"row#":3}},
+        {"color":"green","current":{"column#":2,"row#":2},"home":{"column#":3,"row#":1},"goto":{"column#":3,"row#":3}},
+        {"color":"yellow","current":{"column#":2,"row#":2},"home":{"column#":5,"row#":1},"goto":{"column#":3,"row#":3}}],
+    "spare":{"1-image":"apatite","2-image":"white-square","tilekey":"─"}}

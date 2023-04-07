@@ -1,60 +1,20 @@
-TO: Client
+# Turning Distributed
 
-FROM: Akshay Dupuguntla and Nicholas Selvitelli
+To: Prof. Ben Lerner
 
-CC: Mattias Felleisen
+From: Joe Kwilman, Nathan Moore
 
-DATE: November 3rd, 2022
+Date: 3 November 2022
 
-SUBJECT: Remote-Proxy Design
+Subject: Milestone 6 - Distributed Software System
 
-Our plan for the implementation of remotely connected players requires minor refactoring to the
-Referee and Player to function in a way that allows for both remote and "AI" players to participate
-in a Referee's game. There will be a new Player implementation called the TCP-Player that inherits
-all methods required of the Player API. The TCP-Player is responsible for connecting with a single 
-remote player, handling TCP requests and responses, and serializing and deserializing GameState data
-to and from Json. The component in charge of collecting players for a Referee is called the 
-GameOrganizer.
+To run the game with remote players, communication between players and the referee must be achieved. Gathering players will require the software to allow remote connections and for players to be able to connect to it. A class called Connection will be used to handle establishing connections and facilitating all communication between the referee and the players. 
 
-The GameOrganizer takes in an amount of players required to run a single game and then creates a 
-Referee with a list of players that are ready to play the game. This component deals with the protocol
-to gather players. As soon as the GameOrganizer is given its quota of players to collect, it will 
-listen on a specified port for connect requests to play the game. A connect request is simply a Json string: `"connect"`.
-For each connect request the GameOrganizer receives, it will instantiate a new TCP-Player that only
-talks to the player that sent the connect request and also send a Json String `"accepted"` in response to tell the player they have been added to a game. 
-The newly created TCP-Player is then added to a list of players that will join the game. Once the GameOrganizer has accumulated enough connected players, it will 
-stop listening for additional connect requests and create the Referee with the list of Players. 
-The Referee is then in charge of the game protocol and reporting the results of the game. 
+Connection will first open multiple sockets, one for each player that is expected to play the game. Each socket will bind to a designated port number and wait for a connection to be established from a players machine. Once this connection is opened, the Connection class will send a simple "hello" message and wait for an acknowledgement from the player to ensure that the socket is working as expected. This acknowledgement can be anything. If a player does not connect to a socket in a certain amount of time (timeout), the socket will be closed. After all sockets have a connection or have been closed due to timeout, Connection will communicate to the referee to signal that a game can begin. 
 
+Beginning a game will start by polling all the players to ask for a game board to be used. The expected response to this is a valid Board JSON object as specified int he spec. If provided, the referee will select one of the boards provided and use that to establish the game. Each player will be sent the beginning game board and their goal tiles. An alertPlayer method in the Communication class will be called by the referee to transmit data to the player. The referee will expect this method to return True from the Communication class, which would mean the Communication class heard something back from the players. The Communication class will then write to the socket of the corresponding player to transfer the data to them as a State JSON and a Coordinate (described in spec). The Communication class will return false to the referee if the player times out without responding with anything.
 
-The Json requests and responses used by the TCP-Player will all have the same format to keep parsing the data simple. Each 
-request will be written in Json as an object that contains a String parameter with the name of the 
-request, mapped to an array of the request's parameters serialized to their Json forms. The request
-syntax is written below for each of the Player's methods:
+On a players turn, the Communication class will send a message to the player alerting them of their turn and listen to a response from the player. If the player does not respond with a move/pass in the timeout window, the connection will be closed and the Connection class will alert the referee to kick the player from the game.
+The data recieved must be a PASS or a valid move (JSONArray of Index, Direction, Degree, Coordinate). In the event that a player passes an invalid move to the referee that breaks the rules of the game, the referee will alert the Connection that the player has been kicked and the socket for that player will be closed.
 
-```json
-{"name": []}
-{"proposeBoard0": [rows, columns] }
-{"setup": [State, Coordinate] }
-{"take-turn": [State] }
-{"won": [Boolean]}
-```
-
-Note: The syntax of the parameters are taken from the definitions of the Json written in the 
-Specification for Harness Tests.
-
-The TCP-Player implementation will expect the player's Json responses to be written in a similar
-format. Each response will be a single Json object with a single String parameter (with the name of
-the request this response is replying to) mapped to the Json serialization of the expected return
-type. The response syntax for each request is written below:
-
-```json
-{"name": String}
-{"proposeBoard0": Board }
-{"take-turn": Choice }
-```
-
-As the TCP-Player is responsible for deserializing a player's responses, it must be in charge of 
-determining if each response is well-formed. If a response is not well-formed/the player did not 
-send a response in time, the TCP-Player will return an empty optional. This will signify to the 
-Referee that the player has made an invalid response, so the player must be kicked from the game.
+At the completion of a game, the Connection class will alert each player to the outcome of the game using the sockets. After an acknowledgement from the player that they have received their game outcome, the Connection class will close all sockets and exit gracefully. 

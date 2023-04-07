@@ -1,25 +1,36 @@
-TO: Mattias Felleisen and Ben Lerner
+# Changes
 
-FROM: Derek Leung and Nicholas Selvitelli
+To: Prof. Ben Lerner
 
-DATE: November 7th, 2022
+From: Joseph Kwilman, Duncan Vogel
 
-SUBJECT: Redesign Task
+Date: 10 November 2022
 
-After reviewing the potential game changing features, we have produced an assessment on the impact
-of each change. 
+Subject: Milestone 7 - The Clean Up
 
-The addition of blank tiles for the board has been ranked as a 1 out of 5 level of 
-difficulty. Our reasoning for this low ranking is that we would only need to create a new tile class
-that implements the Tile interface. We estimate that there will be little to no changes to the board
-code.
 
-Allowing goals to be movable tiles will be more involved and has been ranked a 3 out of 5 level of
-difficulty. This change will require the goal positions for each player to be updated after every 
-action, which will require the addition of at least two helper methods. One method would loop 
-through each player determining if their goal position is on a slide, the second method would adjust
-the Player goals accordingly and notify each player of its goal change.
+#### Blank tiles in the board
+*Difficulty*: 5/5 -
+This would require refactoring not only the data design for the board class, but also
+nearly everywhere in the code to include checks for empty tiles and conditional logic. There are
+over 80 usages of Tile in our code, and in each of these spots we would either need to consider
+Optional<Tile> or turn Tile into an interface which can be asked if it is empty, representing a huge
+amount of work and plenty of potential bugs that need to be avoided.
 
-Asking a player to sequentially pursue several goals, one at a time has been ranked a 1 out of 5 
-level of difficulty. This change should only require a signature change for the setup method in the 
-Player interface.
+
+#### Movable goal tiles
+*Difficulty*: 3/5 -
+We currently implement player goals as Coordinates. This means that allowing movable goals would 
+require constant communication with the player alerting them of goal changes.
+We would need to represent player goals as Tiles instead, and then create Tile lookups 
+whenever the goals need to be considered, which is a fairly large change. 
+This would involve us updating the strategies to consider the spare tile as a potential goal, which 
+would be a considerable endeavor.
+
+
+#### Ask players to sequentially pursue several goals, one at a time
+*Difficulty*: 2/5 -
+This would require us to implement goals as a Queue of Coordinates instead of a single Coordinate.
+As players reach their goal, we could remove the goal from the queue. We know a player should head home
+when their queue is empty. We would communicate to the players their new goals as the game is played
+by calling setup() on the player. This change would not be considerably hard.

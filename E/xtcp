@@ -1,2 +1,0 @@
-#!/bin/bash
-java -jar Other/target/Other-1.0-jar-with-dependencies.jar "$@"

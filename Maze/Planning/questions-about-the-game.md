@@ -1,19 +1,19 @@
-TO: Client
+# Questions
 
-FROM: Akshay Dupuguntla and Nicholas Selvitelli
+To: Prof. Ben Lerner
 
-CC: Mattias Felleisen
+From: Joe Kwilman, Nathan Moore
 
-DATE: September 30, 2022
+Date: 30 September 2022
 
-SUBJECT: Questions about the game
+Subject: Milestone 1 - Questions About the Game
 
-While we are in the process of understanding the requirements, we have a couple 
-questions that we would like you to answer to help us with clarification. 
+While planning this assignment, we have formulated many questions about the game that we are being asked to create. The three most important questions are listed below.
 
-What is a fake gem in the context of playing this game? Are there duplicate gems on the board or are 
-"fake" gems just gems that look similar to each other?
+1. If the players are connecting to the game from a different computer, how will the game be rendered for them?
+    1. Will the players be running an instance of the game on their own computer, or will an image of the game be returned to them after each move by a player?
 
-What is the end result of the game when all players do not move? Who would be the winner?
+2. What sorts of moves would be considered cheating/invalid and is there a strike policy or would a player be removed from the game immediately after making one of these moves?
 
-What happens to the player on a tile that is being removed from the board?
+3. How does scoring work in the game? 
+    3. Is scoring based off time to reach target square, lowest number of moves (golf style), or some other metric?

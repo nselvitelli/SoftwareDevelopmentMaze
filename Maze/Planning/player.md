@@ -1,56 +1,38 @@
-TO: Mattias Felleisen and Ben Lerner
+# The Player
 
-FROM: Akshay Dupuguntla and Nicholas Selvitelli
+To: Prof. Ben Lerner
 
-DATE: October 13, 2022
+From: Joe Kwilman, Nathan Moore
 
-SUBJECT: Player Data Representation and Player Interface Design
+Date: 11 October 2022
 
-We have designed our initial draft of our PlayerDataRep, which is the data a player needs to know to
-be able to act. The data contained in PlayerDataRep would be a deep copy of some of the information
-that the Referee knows. This data includes the board and the spare tile, which is necessary for the
-player to determine how to make their next move, the current location of all the players, the home
-tiles of all the players, and a boolean representation of whether it is the player's turn or not.
-
-PlayerDataRep
-- Board: board
-- Tile: spare tile
-- All Players' current locations
-- all player home tiles
-    - PlayerDataObserver: all player information (only viewable, Observer pattern)
-- boolean: if it is their turn
+Subject: Milestone 3 - Designing the Player
 
 
-Our plan for the Player interface consists of two main mechanics that drive the functionality of a
-Player. The Player must be able to receive information about the game and then compute a turn for
-the player to take based on the information provided. The Player must also be able to join and
-leave the game. With the two mechanics in mind, our wishlist looks like the following:
 
-Player Interface:
-- PlayerAction computeAction(PlayerData data)
-    - method referee calls to the player to receive the player's action
-    - consumes PlayerDataRep, computes action
-- void leaveTheGame()
-    - consumes: nothing
-    - computes: requests the Referee to leave the game
-- ClientConnection joinTheGame(Referee server)
-    - consumes: which Referee to ask to join their game
-    - computes: a client socket connected to the server
+## Player Data:
+The information the player needs has to do with what the player wants to do. The strategy for the game is to get to the goal then get to the home, so the player needs to know these. The player also has access to other players' home tiles, but it does not have access to the goal tiles of the other players. The only information necessary about the player itself is it's current location. Finally, the player needs access to the board of tiles and the spare tile to know the configuration of the game and how to make valid moves.
 
-PlayerAction is one of:
-- PassPlayerAction
-- BasicTurnPlayerAction
-    - holds information needed to execute a basic turn on the server
-    - how many degrees to rotate the spare tile
-    - which col/row to slide
-    - the sliding direction
-    - the target position to move the player
+* Coordinate position: the position of the player.
+* Coordinate goal: the location of the tile with the Gem the player is trying to collect.
+* Map<Player, Coordinate> homes: a mapping of the players to their respective homes. This includes the information regarding the home of this player as well a all others.
+* Tile[][] gameboard: the board of tiles.
+* Tile spare: the spare tile to the side of the board. This is publicly accessible as the players need to know it to perform a move.
 
-The action computing mechanism uses a PlayerAction data representation to hold the information
-needed for the Referee to build and execute an Action. This action mechanism has been broken up into
-two methods. The first method, "computeAction," consumes the PlayerData representation (described above)
-and computes the action the Player will take based on the given information. The player must also
-be able to join and exit a game instance. This mechanism is handled with the two methods "joinTheGame" and
-"leaveTheGame." The join method consumes a Referee, so it can request to join that specific Referee's game.
-The leave method takes no parameters as we assume the Player has saved a connection to the Referee and
-then stops its connection with the Referee.
+
+## Player Functionality
+The highest priority of the player is the functionality that allows them to perform valid moves. An action is defined by a direction to slide the row/column, the index of the row\column to be moved, and the coordinate the player wants to move to. The player must also be able to orient the spare piece through rotations before performing their move. The player might also want to leave the game without being kicked, so we will account for this.
+
+* List<Tiles> reachableTiles(): Returns a list of tiles that the player can reach from its current location.
+* Boolean validAct(Direction d, int i, Coordinate c): returns true if the move specified is a valid move.
+* void act(Direction d, int i, Coordinate c): slides the row/column at the index i the direction d and moves the player to the coordinate c.
+* void rotate90(int times): rotates the spare piece 90 degrees the specified number of times.
+* void leaveGame(): allows the player to leave the game if they quit the game or disconnect.
+
+
+
+
+
+
+
+

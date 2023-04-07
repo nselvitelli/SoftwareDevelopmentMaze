@@ -1,3 +1,0 @@
-#!/bin/bash
-javac Other/XCollect.java
-java Other/XCollect

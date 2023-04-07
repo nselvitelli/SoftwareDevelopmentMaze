@@ -1,2 +1,2 @@
-#!/bin/sh
-java -jar ../Maze/target/BadPlayerHarness-jar-with-dependencies.jar "$@"
+#!/usr/bin/env bash
+java -jar Milestone8.jar

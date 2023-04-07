@@ -1,0 +1,15 @@
+[["joe", "Riemann"], ["nate", "Euclid"]]
+{"board":{
+  "connectors":[
+    ["┼","┼","┼","┼","┼","┼","┼","┼"],
+    ["┼","┼","┼","┼","┼","┼","┼","┼"],
+    ["┼","┼","┼","┼","┼","┼","┼","┼"]],
+  "treasures":[[["ammolite","yellow-baguette"],["goldstone","yellow-beryl-oval"],["amethyst","yellow-heart"],["yellow-heart","zoisite"],["unakite","zoisite"],["tourmaline","zoisite"],["tourmaline-laser-cut","zoisite"], ["zoisite","zoisite"]],
+    [["alexandrite-pear-shape","zoisite"],["aplite","unakite"],["golden-diamond-cut","zoisite"],["yellow-beryl-oval","zoisite"],["tigers-eye","zoisite"],["tanzanite-trillion","zoisite"],["super-seven","zoisite"], ["zircon","zoisite"]],
+    [["almandine-garnet","yellow-jasper"],["ametrine","yellow-beryl-oval"],["alexandrite","zircon"],["yellow-baguette","zoisite"],["sunstone","zoisite"],["stilbite","zoisite"],["star-cabochon","zoisite"], ["yellow-jasper","zoisite"]]]},
+  "last":null,
+  "goals": [{"column#":5,"row#":1}, {"column#":7,"row#":1}],
+  "plmt":[
+    {"color":"red","current":{"column#":1,"row#":1},"home":{"column#":1,"row#":1},"goto":{"column#":3,"row#":1}},
+    {"color":"blue","current":{"column#":3,"row#":1},"home":{"column#":3,"row#":1},"goto":{"column#":1,"row#":1}}],
+  "spare":{"1-image":"apatite","2-image":"white-square", "tilekey":"┼"}}

@@ -1,4 +1,4 @@
-(testing /course/cs4500f22/ta/github/ambidextrous-lions/7/xbad)
+(testing /course/cs4500f22/ta/github/fearless-rabbits/7/xbad)
 (testing /course/cs4500f22/ta/github/7/14/Tests/1-in.json /course/cs4500f22/ta/github/7/14/Tests/1-out.json)
 ((/course/cs4500f22/ta/github/7/14/Tests/1-in.json /course/cs4500f22/ta/github/7/14/Tests/1-out.json))
 ((passed 1) (total 1) (partial-score 1))

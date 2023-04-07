@@ -1,68 +1,22 @@
-TO: Mattias Felleisen and Ben Lerner
+# Player Protocol
 
-FROM: Akshay Dupuguntla and Nicholas Selvitelli
+To: Prof. Ben Lerner
 
-DATE: October 19, 2022
+From: Joe Kwilman, Nathan Moore
 
-SUBJECT: The Player Protocol Design
+Date: 20 October 2022
 
-We have devised a protocol for communication between each player and the referee. First, each player
-must request to join the referee's game. This request also contains the player information needed to
-populate the PlayerData stored for a player in each state. If the player can join the game, the
-referee will send a simple response to confirm that the player has joined the game. When the game
-is in play, for each player's turn, the referee will send parts of the state specific to that player.
-That is, the player will only receive the information that they are supposed to know. The player 
-can then send a response, which is its action, back to the referee. If the action is acceptable,
-the referee updates its state with the player's action. If the action is unacceptable, then the state
-sends an error message to the player, indicating that the player must send a new response. The 
-referee then moves on to the next player and sends and receives information specific to that player. 
-If the player does not respond in time to the request, then the referee sends the player a 
-kick message and kicks the player from the game. This continues until a game over state is reached.
-When a game over state is reached, the referee sends a message to each player indicating that the 
-game is over and who the winner is. Pictured below is an illustration of our protocol design.
+Subject: Milestone 4 - Designing the Player Protocol
+
+The UML diagram for our player protocol is below. More detail will be gone into beneath that.
+
+<img width="755" alt="image" src="https://media.github.khoury.northeastern.edu/user/11179/files/eadd8a26-a4f8-4d3d-b2a3-67fb1ce92b89">
 
 
-
-
-####UML Diagram
-```
-Referee                  Player 1                     Player 2                     Player 3
-   |       reqJoin(Pdata1)  |                            |                            |
-   |<-----------------------+                            |                            |
-   |      accepted()        |                            |                            |
-   +----------------------->|                            |                            |
-   |                        |        reqJoin(Pdata2)     |                            |
-   |<---------------------<   <--------------------------+                            |
-   |                        |          accepted()        |                            |
-   +---------------------->   >------------------------->|                            |
-   |                        |                            |       reqJoin(Pdata3)      |
-   |<---------------------<   <------------------------>   >--------------------------+
-   |                        |                             |       accepted()          |
-   +---------------------->   >------------------------>   >------------------------->|
-   ...
-   |      QM(PState 1)      |                            |                            |
-   +----------------------->|                            |                            |
-   |    Response(PAction)   |                            |                            |
-   |<-----------------------+                            |                            |
-   |                        |        QM(PState 2)        |                            |
-   +---------------------->   >------------------------->|                            |
-   |                        | Response(invalid PAction)  |                            |
-   |<---------------------<   <--------------------------+                            |
-   |                                    error()          |                            |
-   +---------------------->   >------------------------->|                            |
-   |                        | Response(valid PAction)    |                            |
-   |<---------------------<   <--------------------------+                            |
-   |                        |                            |         QM(PState 3)       |
-   +---------------------->   >------------------------>   >------------------------->|
-   ...
-   |                        |                            |         kicked()           |
-   +---------------------->   >------------------------>   >------------------------->|
-   |      QM(PState 1)      |                            |                            |
-   +----------------------->|                            |                            |
-   |    Response(PAction)   |                            |                            |
-   |<-----------------------+                            |                            |
-   ...
-   | kickGameOver(winner)   |                            |                            |
-   +----------------------->|                            |                            |
-   +---------------------->   >------------------------->|                            |
-```
+## Protocol
+1. A player will request to join the game. Provided a player can be added, the state will call the function addPlayer. Upon successful completion of this function, the game will respond with a confirmation to the player that they have been added to the game.
+2. Once the players have been added to the game, the state will announce to all players that the game is starting. The state will call nextTurn to start the game. This function will give each player a mockState which allows them to see their own goals and the current gameboard.
+3. If it is someone elses turn other than the player, the player will be alerted to wait. At the completion of another persons turn, the state will call nextTurn and give each player a new mockState to use.
+4. On the players turn, the state will alert the player that it is their turn. The player will choose their move and send their move to the state in the form of moveAction and Coordinate.
+5. The state will validate their move, and if it is valid it will call the performMove function. Following the completion of the move, all players will be given a new mockState once the nextTurn function is called. If the move is unacceptable, the state will call kickPlayer and remove them from the game, call nextTurn, and continue with the game.
+6. In the event that a player wins the game, the player will be alerted that they have won. All other players will be alerted that they have lost.

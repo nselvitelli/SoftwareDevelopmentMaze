@@ -1,33 +1,26 @@
-TO: Client
+# The Analysis
 
-FROM: Akshay Dupuguntla and Nicholas Selvitelli
+To: Prof. Ben Lerner
 
-CC: Mattias Felleisen
+From: Joe Kwilman, Nathan Moore
 
-DATE: September 30, 2022
+Date: 30 September 2022
 
-SUBJECT: Sprint planning
+Subject: Milestone 1 - Analysis of Labyrinth
 
-The work planned for the first three sprints of the project are laid out as the following:
 
-For the first sprint, we will focus on mainly setting up the project and creating the board representation.
-This will entail setting up the project to build and test with Maven and JUnit, as well as creating basic
-project hierarchy. After initial setup, we will then begin with the data representation of the maze.
-This will include the board itself, tiles, gems, player pieces, and home tiles. We will also 
-implement methods to create the board that is populated with a random variation of tiles. 
+In order to accomplish an implementation of the game Labyrinth for the company, a number of sprints will have to be completed. The first three sprints are descriped below and information about specific components within the sprints will be described in more detail below the sprint outline. 
 
-For the second sprint, we will build off the first one by adding tile movement to the board. This 
-includes handling tile rotation as well as adding and removing a tile from a row/column. This sprint
-will also focus on populating tiles with their pieces. In addition, logic will be added to move pieces
-(e.g. moving the player from one tile to another). Following direct tile to tile movement, we will
-add methods to move the player from one tile to a connected tile, ensuring that there is a valid
-path for the player piece to move along.
+## Sprint Outline
+1. Sprint 1: Create Objects for Board, Tile, Player Piece
+2. Sprint 2: Start Creation of Controller
+3. Sprint 3: Complete Controller and Implement View
 
-For the third sprint, we will implement the notion of game states and player states. Game states 
-refer to the information stored on the board after any given player's turn. This information
-includes the board state, which player's turn it is, what the previous sliding action was, how many
-turns it has been since the board state has changed, if the game state is a valid goal state, etc.
-This sprint will also contain work that deals with the player state. The player state handles the
-information needed to track a player between game states. This information includes a notion of the 
-player's piece location, home location, the required gem to obtain, a notion of whether the gem has 
-been obtained, etc.
+## Detailed Information About Components
+* Board: XbyX size board of Tiles, board rows/columns can be slid in either direction
+* Tile: Contains information about shape of path on tile (1 of 4 shapes), stores Gem information on tile
+* Player Piece: Contains name for player, knows target tile and home tile, has a color
+* Controller: Contains game board, handles player moves (at this time will only handle house players), handles start/end of game
+* View: Renders game to screen
+
+Sprint one will create the basic objects that are needed to contain the information about the game and its pieces. With the objects created in sprint one, sprint two will create the controller that handles player moves and sends the move information to the model to manipulate the game and reflect the changes made by the player moves. Sprint three will finalize the functionality of the controller, focusing on both the start of the game and the ending of the game. Once the game objects are completed and a controller for the game exists, the View can be created to render the Gamestate as a GUI image at each turn. 
